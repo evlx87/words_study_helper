@@ -1,27 +1,25 @@
+"""Программа помощник для изучения английских слов"""
 # Словари разной сложности
 WORDS_EASY = {
     "family": "семья",
     "hand": "рука",
     "people": "люди",
     "evening": "вечер",
-    "minute": "минута",
-}
+    "minute": "минута"}
 
 WORDS_MEDIUM = {
     "believe": "верить",
     "feel": "чувствовать",
     "make": "делать",
     "open": "открывать",
-    "think": "думать",
-}
+    "think": "думать"}
 
 WORDS_HARD = {
     "rural": "деревенский",
     "fortune": "удача",
     "exercise": "упражнение",
     "suggest": "предлагать",
-    "except": "кроме",
-}
+    "except": "кроме"}
 
 # Ранги пользователя
 LEVELS = {
@@ -38,14 +36,13 @@ answers = {}
 
 
 def choose_dictionary(difficulty):
-    if difficulty == "1" or difficulty == "легкий" or difficulty == "easy":
-        return WORDS_EASY
-    elif difficulty == "2" or difficulty == "средний" or difficulty == "medium":
-        return WORDS_MEDIUM
-    elif difficulty == "3" or difficulty == "сложный" or difficulty == "hard":
-        return WORDS_HARD
-    else:
-        return None
+    """Функция для выбора сложности"""
+    difficulty_mapping = {
+        "1": WORDS_EASY, "легкий": WORDS_EASY, "easy": WORDS_EASY,
+        "2": WORDS_MEDIUM, "средний": WORDS_MEDIUM, "medium": WORDS_MEDIUM,
+        "3": WORDS_HARD, "сложный": WORDS_HARD, "hard": WORDS_HARD
+    }
+    return difficulty_mapping.get(difficulty)
 
 
 print('''Выберите уровень сложности:
@@ -54,4 +51,4 @@ print('''Выберите уровень сложности:
 3 - Сложный''')
 user_select = input("Введите ваш выбор: ").lower()
 
-print(choose_dictionary(user_select))
+words = choose_dictionary(user_select)
