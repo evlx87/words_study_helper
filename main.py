@@ -1,4 +1,6 @@
 """Программа помощник для изучения английских слов"""
+import random
+
 # Словари разной сложности
 WORDS_EASY = {
     "family": "семья",
@@ -45,6 +47,14 @@ def choose_dictionary(difficulty):
     return difficulty_mapping.get(difficulty)
 
 
+def choose_random_word(dictionary):
+    """Получаем случайное слово, перевод, длину и первую букву"""
+    word, word_translate = random.choice(list(dictionary.items()))
+    word_length = len(word)
+    word_first_letter = word[0]
+    return word, word_translate, word_length, word_first_letter
+
+
 print('''Выберите уровень сложности:
 1 - Легкий
 2 - Средний
@@ -52,3 +62,6 @@ print('''Выберите уровень сложности:
 user_select = input("Введите ваш выбор: ").lower()
 
 words = choose_dictionary(user_select)
+print(type(words))
+
+print(choose_random_word(words))
