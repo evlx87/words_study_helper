@@ -1,6 +1,4 @@
 """Программа помощник для изучения английских слов"""
-import random
-
 # Словари разной сложности
 WORDS_EASY = {
     "family": "семья",
@@ -44,7 +42,13 @@ def choose_dictionary(difficulty):
         "2": WORDS_MEDIUM, "средний": WORDS_MEDIUM, "medium": WORDS_MEDIUM,
         "3": WORDS_HARD, "сложный": WORDS_HARD, "hard": WORDS_HARD
     }
-    return difficulty_mapping.get(difficulty)
+
+    while True:
+        if difficulty in difficulty_mapping:
+            return difficulty_mapping[difficulty]
+        else:
+            print("Неверно выбрана сложность. Попробуйте еще раз.")
+            difficulty = input("Введите ваш выбор: ")
 
 
 def choose_word(iterator):
@@ -73,8 +77,12 @@ def question_answer(dictionary):
 
 def result_output(answers_dictionary):
     """Вывод результата"""
-    answers_true = [word for word, value in answers_dictionary.items() if value]
-    answers_false = [word for word, value in answers_dictionary.items() if not value]
+    answers_true = [
+        word for word,
+        value in answers_dictionary.items() if value]
+    answers_false = [
+        word for word,
+        value in answers_dictionary.items() if not value]
     # Выдаем пользователю список верных/неверных ответов
     print("Правильно отвечены слова:")
     for word in answers_true:
